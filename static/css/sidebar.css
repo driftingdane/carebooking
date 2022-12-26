@@ -1,0 +1,216 @@
+
+/* Sidebar */
+
+:root {
+    --header-height: 3rem;
+    --nav-width: 68px;
+    --first-color: rgba(71, 35, 217, 0);
+    --first-color-light: #4a32aa;
+    --white-color: #F7F6FB;
+    --z-fixed: 100
+}
+
+.bx-menu {color: #3575ba !important;}
+
+*,
+::before,
+::after {
+    box-sizing: border-box
+}
+
+body {
+    position: relative;
+    margin: var(--header-height) 0 0 0;
+    padding: 0 1rem;
+    transition: .5s
+}
+
+
+
+.header {
+    width: 100%;
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: var(--white-color);
+    z-index: var(--z-fixed);
+    transition: .5s
+}
+
+.header_toggle {
+    color: var(--first-color);
+    font-size: 1.5rem;
+    cursor: pointer
+}
+
+.header_img {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden
+}
+
+.l-navbar {
+    position: fixed;
+    top: 0;
+    left: -30%;
+    width: var(--nav-width);
+    height: 100vh;
+    background-color: var(--first-color);
+    padding: .5rem 1rem 0 0;
+    transition: .5s;
+    z-index: var(--z-fixed)
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden
+}
+
+.nav_logo,
+.nav_link {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: 1rem;
+    padding: .5rem 0 .5rem 1rem;
+}
+
+.nav_logo {
+    margin-bottom: 2rem
+}
+
+/*.nav_logo-icon {*/
+/*    font-size: 1.25rem;*/
+/*    color: var(--bs-light)*/
+/*}*/
+
+/*.nav_logo-name {*/
+/*    color: var(--bs-light);*/
+/*    font-weight: 700*/
+/*}*/
+
+/*.nav_link {*/
+/*    position: relative;*/
+/*    color: var(--bs-light);*/
+/*    margin-bottom: 1.5rem;*/
+/*    transition: .3s*/
+/*}*/
+.nav_list a {
+  color: #023047;
+  text-decoration: none
+}
+.nav_name {
+    color: #023047;
+}
+.nav_link {
+  color: #023047;
+  text-decoration: none
+}
+
+.nav_link:hover {
+  color: #999999;
+}
+
+.nav_link.active {
+  color: #023047;
+}
+.nav_link.hover {
+  color: #999999;
+}
+
+.nav_icon {
+    font-size: 1.25rem
+}
+
+.show_nav {
+    left: 0
+}
+
+.body-pd {
+    padding-left: calc(var(--nav-width) + 1rem)
+}
+
+/*.nav_list > .active {*/
+/*    color: var(--bs-light)*/
+/*}*/
+
+/*.nav_list > .active::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    width: 2px;*/
+/*    height: 32px;*/
+/*    background-color: var(--bs-light)*/
+/*}*/
+
+.height-100 {
+    height: 100vh
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        margin: calc(var(--header-height) + 1rem) 0 0 0;
+        padding-left: calc(var(--nav-width) + 2rem)
+    }
+
+    .header {
+        height: calc(var(--header-height) + 1rem);
+        padding: 0 1rem 0 calc(var(--nav-width) + 2rem)
+    }
+
+    .header_img {
+        width: 40px;
+        height: 40px
+    }
+
+    .l-navbar {
+        left: 0;
+        padding: 1rem 1rem 0 0
+    }
+
+    .show_nav {
+        width: calc(var(--nav-width) + 156px)
+    }
+
+    .body-pd {
+        padding-left: calc(var(--nav-width) + 188px)
+    }
+}
+
+
+.shadow-lg {
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px!important;
+}
+
+
+/* Hover */
+.hover-top-shadow {
+  -webkit-transform: translateY(0) translateZ(0);
+  transform: translateY(0) translateZ(0);
+  -webkit-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.hover-top-shadow.hover-top-shadow-lg:hover, .hover-top-shadow.hover-top-shadow-lg:focus {
+  -webkit-transform: translateY(-0.3125rem) translateZ(0);
+  transform: translateY(-0.3125rem) translateZ(0);
+}
+
+.hover-top-shadow:hover, .hover-top-shadow:focus {
+  -webkit-transform: translateY(-0.125rem) translateZ(0);
+  transform: translateY(-0.125rem) translateZ(0);
+  -webkit-box-shadow: 0.5rem 0.5rem 1.5rem rgba(22, 28, 45, 0.1) !important;
+  box-shadow: 0.5rem 0.5rem 1.5rem rgba(22, 28, 45, 0.1) !important;
+}

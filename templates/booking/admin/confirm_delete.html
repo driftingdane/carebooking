@@ -1,0 +1,38 @@
+{% extends 'booking/baseBack.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        .fs-7 {
+            font-size: 0.8rem !important;
+        }
+    </style>
+{% endblock extra_css %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1 py-4">
+                <h2 class="text-black-50 fs-4">Disable days</h2>
+                <div class="col-12">
+                    {% include 'booking/admin/inc/show_errors.html' %}
+                    {% if request.GET.type == 'successed' %}
+                        <div class="alert alert-success fw-bold">
+                            Settings successfully saved
+                        </div>
+                    {% endif %}
+                    <p class="fw-light">Disable specific dates</p>
+                    <form method="POST" action="{% url 'booking:disable_dates' %}" class="row">
+                        {% csrf_token %}
+                        <input type="hidden" id="disable_dates" value="{{ obj.disable_dates }}">
+                        <input type="hidden" id="available_booking_months" value="{{ obj.available_booking_months }}">
+                        {{ dis_form }}
+                        <div class="d-grid gap-2 col-6 mx-auto m-4">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

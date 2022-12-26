@@ -1,0 +1,27 @@
+{% if messages %}
+   {% for message in messages %}
+<div class="modal" tabindex="-1" id="error">
+  <div class="modal-dialog modal-dialog-centered">
+       <div id="message" class="container">
+           <div class="alert alert-{{ message.tags }} text-center alert-dismissible fade show fadeOut" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>
+               {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                {% else %}
+                {{ message.tags|title }}
+                {% endif %}
+            </strong>
+               <ol class="list-group list-group-numbered">
+                   <li class="list-group-item">{{ message }}!</li>
+                   <li class="list-group-item">Field cannot be empty!</li>
+                   <li class="list-group-item">Only letters allowed. No numbers!</li>
+               </ol>
+           </div>
+       </div>
+  </div>
+</div>
+   {% endfor %}
+<script>
+$('#error').modal('show');
+</script>
+{% endif %}

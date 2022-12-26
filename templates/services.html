@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+    <title>{% block title %} Services {% endblock %}</title>
+    <meta property="og:title" content="{{ domain }} | About">
+    <meta property="og:site_name" content="{{ request.get_host }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{% static 'img/logo.png' %}" type="image/png">
+    <meta property="og:description" content="">
+
+    {% block css %}
+        <link type="text/css" rel="stylesheet" href="{% static 'css/services.css' %}">
+    {% endblock css %}
+
+{% endblock head %}
+
+{% block content %}
+
+    <div class="section-center">
+        <div class="center-headline">
+            <h1>Services</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-10 mx-auto">
+
+                    <p class="ps-6">
+                        Our Care and specialities
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}

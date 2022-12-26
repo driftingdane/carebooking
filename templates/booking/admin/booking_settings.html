@@ -1,0 +1,122 @@
+{% extends 'booking/baseBack.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock extra_css %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <h2 class="text-black-50 my-4 fs-4">Settings</h2>
+                <hr>
+                <div class="col-12">
+                    {% include 'booking/admin/inc/show_errors.html' %}
+                    {% if request.GET.type == 'successed' %}
+                        <div class="alert alert-success fw-bold">
+                            Settings successfully saved
+                        </div>
+                    {% endif %}
+                    <form method="POST" class="row">
+                        {% csrf_token %}
+                        <input type="hidden" id="disable_weekend" value="{{ object.disable_weekend }}">
+                        <input type="hidden" id="available_booking_months"
+                               value="{{ object.available_booking_months }}">
+                        {% for field in form %}
+                            {% if field.field.widget.input_type == 'checkbox' %}
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        {{ field }}
+                                        <label for="{{ field.id_for_label }}"
+                                               class="form-label">{{ field.label }}</label>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="{{ field.id_for_label }}"
+                                               class="form-label">{{ field.label }}</label>
+                                        {{ field }}
+                                        <div id="emailHelp" class="form-text">{{ field.help_text }}</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <hr>
+                        <div class="d-grid col-2 ml-auto">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block extra_script %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        function addMonths(date, months) {
+            let d = date.getDate();
+            date.setMonth(date.getMonth() + +months);
+            if (date.getDate() !== d) {
+                date.setDate(0);
+            }
+            return date;
+        }
+
+        // Add selected months to current date
+        let nydate = addMonths(new Date(), +document.querySelector("#available_booking_months").value);
+        const disable_weekdays = document.querySelector("#disable_weekdays").value;
+        const disable_weekend = document.querySelector("#disable_weekend").value;
+        const enable_weekdays = document.querySelector("#enable_weekdays").value;
+
+        const enab = disable_weekdays.replace(/ /g, "");
+        const active = enab.split(",")
+
+        // Date Functions START
+        let oldDate = new Date();
+        let hour = oldDate.getHours();
+        let newDate = oldDate.setHours(hour + 5);
+
+        flatpickr("#disable_weekdays", {
+            mode: "multiple",
+            altInput: true,
+            altFormat: "D j-m, Y",
+            dateFormat: "Y-m-d",
+            minDate: newDate,
+            maxDate: nydate,
+            monthSelectorType: "static",
+            {#disable: [#}
+            {#    function rmWeekend(date) {#}
+            {#        if (disable_weekend === "False") return ""#}
+            {#        return (date.getDay() === 0 || date.getDay() === 6);#}
+            {#    },#}
+            {#],#}
+            disable: active,
+            shorthand: true,
+            {#defaultDate: [text],#}
+            {#allowInvalidPreload: false,#}
+            "locale": {
+                "firstDayOfWeek": 1 // start week on Monday
+            }
+        })
+
+        flatpickr("#enable_weekdays", {
+            mode: "multiple",
+            altInput: true,
+            altFormat: "D j-m, Y",
+            dateFormat: "Y-m-d",
+            minDate: newDate,
+            maxDate: nydate,
+            monthSelectorType: "static",
+            enable: active,
+            shorthand: true,
+            "locale": {
+                "firstDayOfWeek": 1 // start week on Monday
+            }
+        })
+
+        // Date Functions END
+
+    </script>
+{% endblock extra_script %}

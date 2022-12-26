@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <h2 class="text-black-50 my-4 fs-4">Bookings</h2>
+                <hr>
+
+                <div class="row mt-1">
+                    <div style="min-height: 200px;" class="my-2">
+                        {% include 'booking/admin/inc/booking_tabel.html' with bookings=object_list full_table=True %}
+                    </div>
+                </div>
+
+                {% include "booking/admin/inc/pagination.html" %}
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,46 @@
+$banner-background: rgba(255,255,255,0);
+$banner-repeat: no-repeat;
+$banner-position-top: center top;
+$banner-position-bottom: center bottom;
+$banner-webkit-background-size: cover;
+$banner-moz-background-size: cover;
+$banner-o-background-size: cover;
+$banner-background-size: cover;
+
+
+@function text($bg) {
+  @if(lightness($bg) > 50) {
+    @return #000;
+  } @else {
+    @return #FFF;
+  }
+}
+
+//@mixin dc($c) { // dc is short for dynamic color
+//  color: text($c);
+//}
+
+// margin and padding classes
+@each $space in space {
+  .m-#{$space}{
+    margin: #{$space}rem;
+  }  .my-#{$space}{
+    margin: #{$space}rem 0;
+  }  .p-#{$space}{
+    padding: #{$space}rem;
+  }  .py-#{$space}{
+    padding: #{$space}rem 0;
+  }
+}
+
+.table-borderless td { padding: 1em;}
+.table-borderless tr:first-child td { padding-top: 0.2em;}
+.table-borderless tbody:before {
+    content:"@";
+    display:block;
+    line-height:10px;
+    text-indent:-99999px;
+}
+.table-borderless thead {
+  line-height: 4em !important;
+}

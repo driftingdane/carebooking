@@ -1,0 +1,38 @@
+{% extends 'booking/baseBack.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <h2 class="text-black-50 my-4 fs-4">Overview</h2>
+                <hr>
+                <!-- TOP card START -->
+                {% include 'booking/admin/inc/home_top_card.html' %}
+                <!-- TOP card END -->
+                <div class="row">
+                    <div class="col-lg-12 my-2">
+                        <h6 class="text-success">Today´s bookings</h6>
+                        {% include 'booking/admin/inc/booking_tabel.html' with bookings=today_bookings %}
+                    </div>
+
+                    <div class="col-lg-12 my-2">
+                        <h6 class="text-info">Weekly</h6>
+                        <div class="text-muted small">(Today + 7 days)</div>
+                        {% include 'booking/admin/inc/booking_tabel.html' with bookings=weekly_bookings %}
+                    </div>
+
+                    <div class="col-lg-12 my-2">
+                        <h6 class="text-warning">Pending approval</h6>
+                        {% include 'booking/admin/inc/booking_tabel.html' with bookings=pending_bookings %}
+                    </div>
+
+                    <div class="col-lg-12 my-2">
+                        <h6 class="text-success">Approved bookings</h6>
+                        {% include 'booking/admin/inc/booking_tabel.html' with bookings=approved_bookings %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

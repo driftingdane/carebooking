@@ -1,0 +1,126 @@
+{% extends 'booking/baseBack.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+    <style>
+        .fs-7 {
+            font-size: 0.8rem !important;
+        }
+    </style>
+{% endblock extra_css %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1 py-4">
+                <h2 class="text-black-50 fs-4">Disable days</h2>
+                <div class="col-12">
+                    {% include 'booking/admin/inc/show_errors.html' %}
+                    {% if request.GET.type == 'successed' %}
+                        <div class="alert alert-success fw-bold">
+                            Settings successfully saved
+                        </div>
+                    {% endif %}
+                    <p class="fw-light">Disable specific dates</p>
+                    <form method="POST" action="{% url 'booking:disable_dates' %}" class="row">
+                        {% csrf_token %}
+                        <input type="hidden" id="disable_dates" value="{{ obj.disable_dates }}">
+                        <input type="hidden" id="disable_weekend" value="{{ obj.disable_weekend }}">
+                        <input type="hidden" id="available_booking_months" value="{{ obj.available_booking_months }}">
+                        {{ dis_form }}
+                        <div class="d-grid gap-2 col-6 mx-auto m-4">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <hr>
+
+                {% if dis_days %}
+                <div class="col-12 py-4"><h2 class="text-black-50 fs-4">Enable days</h2>
+                    <p class="fw-light">Delete dates to enable them</p>
+                    <ol class="list-group">
+                        {% for d in dis_days %}
+                            <li
+                                    class="list-group-item d-flex justify-content-between align-items-start disable_dates"
+                                    data-id="{{ d.disable_dates }}">
+                                <form action="{% url 'booking:days_delete' d.pk %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn" type="submit"><span class="badge bg-danger rounded-pill fs-7"><i
+                                            class="fa-solid fa-x fa-fx"></i></span>
+                                    </button>
+                                </form>
+                                <div class="text-center d-none">
+                                    {% if d.note %}
+                                        <span>{{ d.note|capfirst }}</span>
+                                    {% else %}
+                                        {#  Hide None  #}
+                                    {% endif %}
+                                </div>
+                                <span class="badge bg-info rounded-pill fs-7">{{ d.disable_dates }}</span>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block extra_script %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        function addMonths(date, months) {
+            let d = date.getDate();
+            date.setMonth(date.getMonth() + +months);
+            if (date.getDate() !== d) {
+                date.setDate(0);
+            }
+            return date;
+        }
+
+        // Add selected months to current date
+        let nydate = addMonths(new Date(), +document.querySelector("#available_booking_months").value);
+        let disable_weekend = document.querySelector("#disable_weekend").value;
+        if ($('.disable_dates').length) {
+            const dis_ena = document.querySelector(".disable_dates").value;
+        }
+
+        function rmWeekend(date) {
+            if (disable_weekend === "False") return ""
+            return (date.getDay() === 0 || date.getDay() === 6);
+        }
+
+        let arr = [];
+        i = 0;
+
+        $(".disable_dates").each(function () {
+            arr[i++] = $(this).data("id");
+        });
+
+        // Date Functions START
+        let oldDate = new Date();
+        let hour = oldDate.getHours();
+        let newDate = oldDate.setHours(hour + 5);
+
+        flatpickr("#disable_days", {
+            theme: "material_blue",
+            mode: "multiple",
+            altInput: true,
+            altFormat: "D j-m, Y",
+            dateFormat: "Y-m-d",
+            minDate: newDate,
+            maxDate: nydate,
+            monthSelectorType: "static",
+            disable: arr, disable_weekend,
+            shorthand: true,
+            "locale": {
+                "firstDayOfWeek": 1, // start week on Monday
+            }
+        })
+        // Date Functions END
+
+    </script>
+{% endblock extra_script %}>

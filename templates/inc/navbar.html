@@ -1,0 +1,36 @@
+{% load static %}
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg bg-light rounded collage-nav">
+        <div class="container-fluid">
+            <button class="btn navbar-toggler mb-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarsExample10">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-md-center text-center" id="navbarsExample10">
+                <ul class="navbar-nav mb-3">
+                    <li class="nav-item fs-4">
+                        <a class="text-decoration-none text-reset align-middle"
+                           href="{% url 'main:home' %}">
+                            <span>Care</span>
+                            <img class="rounded mx-auto d-block" src="{% static 'img/logo.png' %}" alt="logo">
+                            <span>Cream</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3">
+                        <a class="nav-link" href="{% url 'services:service' %}">Our Care</a>
+                    </li>
+                    <li class="nav-item mt-3">
+                        <a class="nav-link" href="{% url 'booking:create_booking' %}">Booking</a>
+                    </li>
+                    <li class="nav-item mt-3">
+                        <a class="nav-link" href="{% url 'about:about' %}">About</a>
+                    </li>
+                    <li class="nav-item mt-3">
+                        <a class="nav-link" href="{% url 'contact:contact' %}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

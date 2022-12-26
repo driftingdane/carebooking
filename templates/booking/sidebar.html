@@ -1,0 +1,102 @@
+{% load static %}
+<header class="header body-pd" id="header">
+    <div class="header_toggle"><i class="bx-menu fa-solid fa-arrow-left" id="header-toggle"></i></div>
+    <div class="font-semibold ml-4 ml-md-5 ml-lg-5 ml-xs-0">
+        <a title="Home" class="text-reset text-decoration-none"
+           href="{% url 'booking:admin_dashboard' %}">
+            <span class="fw-bold lead">Admin Dashboard</span>
+        </a>
+    </div>
+    <div class="">
+        <a title="Follow us on Instagram" class="btn btn-link text-reset text-decoration-none"
+           href="https://www.instagram.com/lingomorten/" target="_blank">
+            <i class="fa-brands fa-instagram header-icon fa-2x align-middle"></i>
+        </a>
+    </div>
+</header>
+<div class="l-navbar collage-blueWhite show_nav" id="nav-bar">
+    <nav class="nav position-relative">
+        <div class="nav_list">
+            <div class="text-center">
+                <a title="Home"
+                   href="{% url 'booking:admin_dashboard' %}"><span class="font-bold lead">Care</span>
+                    <img src="{% static 'img/logo.png' %}" class="header-icon"><span
+                            class="font-bold lead"> Cream</span>
+                </a>
+
+            </div>
+            <div class="text-center">
+                <a title="Dashboard" href="{% url 'booking:admin_dashboard' %}">
+                    <div class="badge rounded-pill white-white-50">
+                            <span class="nav_name hide-name">Hej,
+                                {% if not request.user.user_name %}
+                                    {{ user.first_name|capfirst }}
+                                    {{ request.user|capfirst }}
+                                {% else %}
+                                    {{ user.user_name|capfirst }}
+                                    {{ request.user|capfirst }}
+                                {% endif %}
+                            </span>
+                    </div>
+                </a>
+            </div>
+
+            <hr class="ml-3 dropdown-divider mb-3">
+            <a title="Dashboard - overview" href="{% url 'booking:admin_dashboard' %}"
+               class="nav_link hover-top-shadow">
+                <i class="fa-solid fa-chess-board nav_icon icon_border fa-fw align-middle"></i><span
+                    class="nav_name">Dashboard</span></a>
+
+            <a title="All bookings" href="{% url 'booking:booking_list' %}" class="nav_link hover-top-shadow"><i
+                    class="fa-regular fa-bookmark nav_icon icon_border fa-fw align-middle"></i><span
+                    class="nav_name">Bookings</span></a>
+
+            <a title="Booking settings" href="{% url 'booking:booking_settings' %}" class="nav_link hover-top-shadow">
+                <i class="fa-solid fa-sliders nav_icon icon_border fa-fw align-middle"></i><span
+                    class="nav_name">Settings</span></a>
+
+            <a title="Booking settings" href="{% url 'booking:disable_dates' %}" class="nav_link hover-top-shadow">
+                <i class="fa-regular fa-calendar-xmark nav_icon icon_border fa-fw align-middle"></i><span
+                    class="nav_name">Disable days</span></a>
+
+            {#            <div class="position-absolute bottom-0 w-100 hover-top-shadow">#}
+            {#                <div class="d-none d-md-block">#}
+            {#                    {% if request.user.is_authenticated %}#}
+            {#                        <form action="" method="post">#}
+            {#                            {% csrf_token %}#}
+            {#                            <button title="Sign out of your account" class="btn btn-link nav_link text-decoration-none">#}
+            {#                                <i class="fa-solid fa-arrow-right-to-bracket nav_icon icon_border fa-fw align-middle"></i>#}
+            {#                                <span class="nav-name"> Sign out</span>#}
+            {#                            </button>#}
+            {#                        </form>#}
+            {#                    {% else %}#}
+            {#                        <a title="Sign into your account"#}
+            {#                           href="{{ request.scheme }}://{{ request.get_host }}/accounts/login/"#}
+            {#                           class="btn btn-link nav_link text-decoration-none">#}
+            {#                            <i class="fa-solid fa-arrow-right-to-bracket nav_icon icon_border fa-fw align-middle"></i>#}
+            {#                            <span class="nav-name"> Sign in</span></a>#}
+            {#                    {% endif %}#}
+            {#                </div>#}
+            {#                <!-- Mobile  -->#}
+            {#                <div class="d-md-none d-lg-none d-xl-none d-xxl-none">#}
+            {#                    {% if request.user.is_authenticated %}#}
+            {#                        <form action="" method="post">#}
+            {#                            {% csrf_token %}#}
+            {#                            <button title="Sign out of your account"#}
+            {#                                    class="btn btn-link nav_link text-decoration-none">#}
+            {#                                <i class="fa-solid fa-arrow-right-to-bracket nav_icon icon_border align-middle"></i>#}
+            {#                            </button>#}
+            {#                        </form>#}
+            {#                    {% else %}#}
+            {#                        <a title="Sign into your account"#}
+            {#                           href="{{ request.scheme }}://{{ request.get_host }}/accounts/login/"#}
+            {#                           class="btn btn-link nav_link text-decoration-none">#}
+            {#                            <i class="fa-solid fa-arrow-right-to-bracket nav_icon icon_border align-middle"></i></a>#}
+            {#                    {% endif %}#}
+            {#                </div>#}
+            {#            </div>#}
+
+        </div><!-- Nav list -->
+
+    </nav>
+</div>

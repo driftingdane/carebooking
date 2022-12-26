@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+    <title>{% block title %} {{ domain }} | Booking {% endblock %}</title>
+    <meta property="og:title" content="{{ domain }} | Booking ">
+    <meta property="og:site_name" content="{{ request.get_host }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{% static 'img/logo.png' %}" type="image/png">
+    <meta property="og:description" content="">
+
+    {% block css %}
+        <link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% endblock css %}
+
+{% endblock head %}
+
+{% block content %}
+
+    <div class="section-center">
+    <div class="px-4 my-5 text-center">
+        <div class="center-headline">
+            <h1>Home</h1>
+        </div>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap,
+                the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
+                responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn orange-white-40 hover-top-shadow btn-lg px-4 gap-3">Primary button
+                </button>
+                <button type="button" class="btn orange-white-70 hover-top-shadow btn-lg px-4">Secondary</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper elit orci, eget sodales
+                    sem
+                    tempus et. Nunc sapien sem, maximus sed ante vitae, faucibus molestie nulla. Donec aliquam
+                    ligula
+                    libero, vel tincidunt dui sollicitudin sit amet. Phasellus ac arcu ut lectus condimentum commodo
+                    quis vel mauris. Nam quis augue a neque euismod hendrerit. Aenean suscipit varius pellentesque.
+                    Vivamus commodo nunc sit amet nibh sodales elementum. Donec ornare dui id nunc iaculis, sit amet
+                    iaculis quam ornare. Fusce sollicitudin a tortor ornare molestie.
+                </p>
+
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/300" class="img-fluid card-img-top">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/300" class="img-fluid card-img-top">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/300" class="img-fluid card-img-top">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- Row albums -->
+
+        </div>
+
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}

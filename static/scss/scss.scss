@@ -1,0 +1,210 @@
+@import 'config';
+@import 'colors';
+@import 'buttons_custom';
+@import 'mixins';
+@import 'vendor/rfs';
+
+@for $i from 20 through 100 {
+  @if $i % 10 == 0 {
+    $percentage: $i*1%;
+    .blue-black-#{$i} {
+      background-color: mix(black, $blue, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .blue-black-#{$i}:hover {
+        color: #fff;
+    }
+    .blue-white-#{$i}:hover {
+        color: #000;
+    }
+    .blue-white-#{$i} {
+      background-color: mix(white, $blue, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+
+
+    .indigo-black-#{$i} {
+      background-color: mix(black, $indigo, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .indigo-black-#{$i}:hover {
+        color: #fff;
+    }
+    .indigo-white-#{$i}:hover {
+        color: #000;
+    }
+    .indigo-white-#{$i} {
+      background-color: mix(white, $indigo, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+
+
+   .cyan-black-#{$i} {
+      background-color: mix(black, $cyan, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .cyan-black-#{$i}:hover {
+        color: #fff;
+    }
+    .cyan-white-#{$i}:hover {
+        color: #000;
+    }
+    .cyan-white-#{$i} {
+      background-color: mix(white, $cyan, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+    .orange-black-#{$i} {
+      background-color: mix(black, $orange, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .orange-black-#{$i}:hover {
+        color: #fff;
+    }
+    .orange-white-#{$i} {
+      background-color: mix(white, $orange, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+    .orange-white-#{$i}:hover {
+        color: #000;
+    }
+
+    .yellow-black-#{$i} {
+      background-color: mix(black, $yellow, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .yellow-black-#{$i}:hover {
+        color: #fff;
+    }
+    .yellow-white-#{$i} {
+      background-color: mix(white, $yellow, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+    .yellow-white-#{$i}:hover {
+        color: #000;
+    }
+
+    .purple-black-#{$i} {
+      background-color: mix(black, $purple, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .purple-black-#{$i}:hover {
+        color: #fff;
+    }
+    .purple-white-#{$i} {
+      background-color: mix(white, $purple, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+    .purple-white-#{$i}:hover {
+        color: #000;
+    }
+
+    .teal-black-#{$i} {
+      background-color: mix(black, $teal, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .teal-black-#{$i}:hover {
+        color: #fff;
+    }
+    .teal-white-#{$i} {
+      background-color: mix(white, $teal, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+    .teal-white-#{$i}:hover {
+        color: #000;
+    }
+
+    .green-black-#{$i} {
+      background-color: mix(black, $green, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .green-black-#{$i}:hover {
+        color: #fff;
+    }
+    .green-white-#{$i} {
+      background-color: mix(white, $green, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+    .green-white-#{$i}:hover {
+        color: #000;
+    }
+
+    .white-black-#{$i} {
+      background-color: mix(black, $white, $percentage);
+      color: $gray-400;
+      border-color: #fff;
+    }
+    .white-black-#{$i}:hover {
+        color: #fff;
+    }
+    .white-white-#{$i} {
+      background-color: mix(white, $white, $percentage);
+      color: $gray-800;
+      border-color: #000;
+    }
+    .white-white-#{$i}:hover {
+        color: #000;
+    }
+  }
+}
+
+
+
+
+/*Single property */
+html {
+  font-size: 1.000em; }
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(0.3824091778vw + 0.924em); } }
+@media screen and (min-width: 1366px) {
+  html {
+    font-size: 1.188em; } }
+
+@media screen and (max-width: 1366px) {
+  .tag-label, .tag-experience > span, .tag-label a  {
+    font-size: 0.850rem!important; } }
+
+/* Multiple properties with same values */
+h1, h2, h3, h4, h5 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@media screen and (min-width: 20rem) {
+  h1, h2, h3, h4, h5 {
+    padding-top: calc(1vw - 0.2rem);
+    padding-bottom: calc(1vw - 0.2rem);
+     } }
+@media screen and (min-width: 70rem) {
+  h1, h2, h3, h4, h5 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; } }
+
+.table {border-collapse:collapse; table-layout: auto;}
+.text-nowrap {
+  //overflow-wrap: break-spaces;
+  //word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  //white-space: nowrap;
+  //max-width: 200px;
+}
+
+.table > .b-right {
+  border-right: 1px solid white!important;
+}

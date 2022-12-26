@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'admin/css/bootstrap5/bootstrap.min.css' %}">
+    <style>
+        select {
+            height: auto;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+<div class="col-sm-6 mx-auto">
+    <div class="alert alert-warning">If no errors but fails with "page does not exist" check if you exported you sheet as CSV format.</div>
+<form class="form-control" action="{% url 'admin:index' %}sentences/sentencelib/upload-text/" method="post" enctype="multipart/form-data" novalidate>
+    <div class=""><p class="m-3">Select language from the list</p>
+        <input type="hidden" name="wd_id" value="{{ wd_id }}">
+    </div>
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button class="btn btn-primary btn-info-lg" type="submit">Upload data</button>
+</form>
+</div>
+{% endblock %}
+
+<!-- Custom scripts for other templates -->
+{% block js %}
+<script>
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+</script>
+{% endblock js %}

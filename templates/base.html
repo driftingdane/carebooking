@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" class="ie6 oldie"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" class="ie7 oldie"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8 oldie"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js h-100" xmlns:https="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+<head>
+
+    <!-- Custom Build CMS (Django and Python) Created by: Morten Noerregaard
+
+          https://CraftinDev.com
+          Programming by: Morten Noerregaard
+          Design by: Morten Noerregaard
+          Any Wordpress? NOOOOOOOO!!!
+          -->
+
+    <meta name="robots" content="all">
+    <meta content="max-age=200" http-equiv="cache-control">
+    <!-- Enable Standards mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Care Cream | {% block title %} {% endblock %}</title>
+    <!-- Apple devices -->
+    <link rel="apple-touch-icon-precomposed" href="{% static 'img/logo.png' %}" type="image/png">
+    <!-- 152x152 -->
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
+    <!-- 32x32 or 64x64 -->
+    <!-- For IE -->
+    <!--[if IE]>
+    <link rel="shortcut icon" href="{% static " img/logo.png" %}"><![endif]-->
+    <!-- 16x16 -->
+    <!-- For Mobile Windows -->
+    <meta name="msapplication-TileColor" content="#D83434">
+    <meta name="msapplication-TileImage" content="{% static 'img/logo.png' %}" type="image/png">
+    <!-- 32x32 or 64x64 -->
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
+    {% block head %}
+        <meta name="author" content="Morten Noerregaard">
+        <meta name="description" content="Lingostack | We stack languages ready to learn">
+        <meta name="keywords" content="">
+        <meta name="copyright" content="{{ request.get_host }}">
+        <!-- Facebook OpenG -->
+        <meta property="fb:admins" content="">
+        <meta property="fb:app_id" content="">
+        <meta property="og:type" content="website">
+
+        <meta property="og:title" content="Lingostack | We stack languages ready to learn">
+        <meta property="og:site_name" content="{{ request.get_host }}">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
+        <meta property="og:image" content="{% static 'img/logo.png' %}" type="image/png">
+        <meta property="og:description" content="">
+
+
+    <!-- Custom css for other templates -->
+    {% block css %}
+
+    {% endblock css %}
+
+
+    {% endblock head %}
+    <!-- regular styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap" rel="stylesheet">
+
+    <link href="{% static 'css/bootstrap.min.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/navbar.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/main.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/blend.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/footer.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+
+    <!-- custom imports -->
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!--- CSS files are imported into scss -->
+    <link href="{% static 'scss/scss.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <script async src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script async src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="d-flex flex-column h-100">
+
+{% include 'inc/navbar.html' %}
+
+<main class="flex-shrink-0">
+
+    {% block def_msg %}
+        {% include 'inc/_alert_msg.html' %}
+    {% endblock def_msg %}
+
+    {% block content %}
+        <!-- HTML CONTENT -->
+        {% block default_messages %} {% endblock default_messages %}
+
+    {% endblock content %}
+
+</main>
+
+<script src="{% static "js/jquery.3.6.3.min.js" %}"></script>
+<script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+
+
+{% block js %}
+    <!-- Custom scripts for other templates -->
+{% endblock js %}
+
+{% include 'inc/footer.html' %}
+
+</body>
+</html>

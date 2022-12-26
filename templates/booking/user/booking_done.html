@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+    <title>{% block title %} {{ BOOKING_TITLE }} | Booking {% endblock %}</title>
+    <meta property="og:title" content="Cream care | Booking done">
+    <meta property="og:site_name" content="{{ request.get_host }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{% static 'img/logo.png' %}" type="image/png">
+    <meta property="og:description" content="">
+
+    {% block css %}
+        <link type="text/css" rel="stylesheet" href="{% static 'css/booking.css' %}">
+    {% endblock css %}
+
+{% endblock head %}
+
+{% block content %}
+
+  <div>
+        <div id="booking" class="section-center">
+            <div class="center-headline">
+                <h1>Booking</h1>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 booking-cta px-4">
+                        <h2 class="">{{ title }}</h2>
+                        <span class="text-wrap text-muted py-2">{{ description }}</span>
+                        <div class="text-wrap py-2">{{ book_now }}</div>
+                    </div>
+                    <div class="col-md-7 col-md-offset-1">
+                        <div class="booking-form collage-blueWhite">
+                            <!-- progress START -->
+                            <div class="progress mb-4">
+                                <div class="progress-bar bg-info" role="progressbar" style="width:{{ progress_width }}%"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ progress_width }}%
+                                </div>
+                            </div>
+                            <div class="tab-content" id="pills-tabContent">
+                                {% include 'booking/admin/inc/show_errors.html' %}
+                                <!-- Last Step START -->
+                                <div class="tab-pane fade show active" id="pills-done" role="tabpanel"
+                                     aria-labelledby="pills-done-tab">
+                                    <h1 class="h2">Booking created!</h1>
+                                    <p class="text-muted">You will receive a confirmation email shortly.</p>
+                                    <p class="text-muted">Thanks for your time!</p>
+                                    <div class="d-flex align-items-center text-center justify-content-center py-3 border">
+                                        <h4 style="padding-left: 6px;" class="text-muted">Booking ID: </h4>
+                                        <h2 style="padding-left: 6px;">#{{ booking_id|truncatechars:9 }}</h2>
+                                    </div>
+                                </div>
+                                <div class="form-btn d-flex mt-4">
+                                    <a href="{% url 'booking:create_booking' %}" id="make-new-app"
+                                       class="btn btn-light mx-auto">Make another booking</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}

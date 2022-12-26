@@ -1,0 +1,18 @@
+
+.collage-nav {
+
+    background:-webkit-linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
+    background:-moz-linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
+    background:linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
+
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+
+.home-link {
+
+
+}

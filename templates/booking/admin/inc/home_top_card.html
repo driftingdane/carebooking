@@ -1,0 +1,72 @@
+<div class="row justify-content-between">
+    <!-- top card START -->
+    <div class="mb-3 col-md-6 col-lg-3">
+        <div class="card primary-card">
+            <div class="row g-0">
+                <div class="col-10">
+                    <div class="card-body">
+                        <p class="card-text mb-0 text-primary">Today</p>
+                        <h5 class="card-title">{{today_bookings.count}}</h5>
+                    </div>
+                </div>
+                <div class="col-2 my-auto">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top card END -->
+    <!-- top card START -->
+    <div class=" mb-3 col-md-6 col-lg-3">
+        <div class="card success-card">
+            <div class="row g-0">
+                <div class="col-10">
+                    <div class="card-body">
+                        <p class="card-text mb-0 text-info">Bookings</p>
+                        <h5 class="card-title">{{weekly_bookings.count}}</h5>
+                    </div>
+                </div>
+                <div class="col-2 my-auto">
+                    <i class="fa-regular fa-bookmark"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top card END -->
+    <!-- top card START -->
+    <div class=" mb-3 col-md-6 col-lg-3">
+        <div class="card info-card">
+            <div class="row g-0">
+                <div class="col-10">
+                    <div class="card-body">
+                        <p class="card-text mb-0 text-success">Approved</p>
+                        <h5 class="card-title">{{approved_bookings.count}}</h5>
+                    </div>
+                </div>
+                <div class="col-2 my-auto">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top card END -->
+    <!-- top card START -->
+    <div class=" mb-3 col-md-6 col-lg-3">
+        <a title="Pending ookings" href="{% url 'booking:booking_list' %}">
+        <div class="card warning-card">
+            <div class="row g-0">
+                <div class="col-10">
+                    <div class="card-body">
+                        <p class="card-text mb-0 text-warning">Pending</p>
+                        <h5 class="card-title">{{pending_bookings.count}}</h5>
+                    </div>
+                </div>
+                <div class="col-2 my-auto">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <!-- top card END -->
+</div>

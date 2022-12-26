@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{% block title %} Booking {% endblock %}</title>
+    <meta property="og:title" content="{{ domain }} | Booking">
+    <meta property="og:site_name" content="{{ request.get_host }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{% static 'img/logo.png' %}" type="image/png">
+    <meta property="og:description" content="">
+
+    {% block css %}
+        <link type="text/css" rel="stylesheet" href="{% static 'css/booking.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    {% endblock css %}
+
+{% endblock head %}
+
+{% block content %}
+
+    <div>
+        <div id="booking" class="section-center">
+            <div class="center-headline">
+                <h1>Booking</h1>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 booking-cta px-4">
+                        <h2 class="">{{ title }}</h2>
+                        <span class="text-wrap text-muted py-2">{{ description }}</span>
+                        <div class="text-wrap py-2">{{ book_now }}</div>
+                    </div>
+                    <div class="col-md-7 col-md-offset-1">
+                        <div class="booking-form collage-blueWhite">
+                            <!-- progress START -->
+                            <div class="progress mb-4">
+                                <div class="progress-bar bg-info" role="progressbar" style="width:{{ progress_width }}%"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ progress_width }}%
+                                </div>
+                            </div>
+                            <!-- progress END -->
+                            <form id="bookingForm" method="POST" action="{% url "booking:create_booking" %}">
+                                {% csrf_token %}
+                                <!-- tabs START -->
+                                <div class="tab-content" id="pills-tabContent">
+
+                                    {% block steps %}
+                                        {% include 'booking/admin/inc/show_errors.html' %}
+                                        <input type="hidden" id="available_booking_months"
+                                               value="{{ booking_settings.available_booking_months }}"/>
+                                        <input type="hidden" id="disable_weekend"
+                                               value="{{ booking_settings.disable_weekend }}"/>
+                                        <input type="hidden" id="disable_weekdays"
+                                               value="{{ booking_settings.disable_weekdays }}"/>
+                                        {#                                        {{ booking_settings.max_booking_per_time }}#}
+                                        {#                                        {{ get_available_time }}#}
+                                        <!-- steps START -->
+                                        <div class="tab-pane fade show active" id="pills-date" role="tabpanel"
+                                             aria-labelledby="pills-date-tab">
+                                            <h1 class="text-muted h2">{{ wizard.steps.current }}</h1>
+                                            <p class="text-muted">Please fill in the
+                                                booking {{ wizard.steps.current }}:</p>
+                                            <hr>
+                                            {{ wizard.management_form }}
+                                            <div class="row">
+                                                {% for field in wizard.form %}
+                                                    <div class="col-md-6 mb-3">
+                                                        <div class="form-floating {% if field.is_hidden %}d-none{% endif %}">
+                                                            {{ field }}
+                                                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                                        </div>
+                                                    </div>
+                                                    {% if wizard.steps.current == "Time" %}
+                                                        <!-- Time List START -->
+                                                        <div id="time-list" class="container row g-2">
+                                                            {% for item in get_available_time %}
+                                                                <p class="border mx-1 col-2 py-3 text-center bg-{% if item.is_taken %}secondary opacity-25 {% elif item.time == field.value %}info text-white {% else %}light {% endif %}">{{ item.time }}</p>
+                                                            {% endfor %}
+                                                        </div>
+                                                        <!-- Time List End -->
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <!-- steps END -->
+                                    {% endblock steps %}
+
+                                    <!-- tabs END -->
+                                    {% block buttons %}
+                                        <div class="form-btn d-flex mt-4">
+                                            {% if wizard.steps.prev %}
+                                                <button class="btn btn-outline-secondary" name="wizard_goto_step"
+                                                        formnovalidate type="submit" value="{{ wizard.steps.prev }}">
+                                                    previous step
+                                                </button>
+                                            {% endif %}
+                                            <input type="submit" class="btn btn-light border-0 text-uppercase ml-auto"
+                                                   value="Next step"/>
+
+                                        </div>
+                                    {% endblock buttons %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+{% block js %}
+    <script src="{% static "js/index.js" %}"></script>
+    <script src="{% static "js/sidebar.js" %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        // time functions START
+        document.querySelectorAll("#time-list .bg-light, #time-list .bg-info").forEach(timeBtn => {
+            timeBtn.addEventListener("click", timeBtnClicked.bind(this, timeBtn))
+        })
+
+        function timeBtnClicked(item) {
+            document.querySelectorAll("#time-list .bg-info").forEach(item => {
+                item.classList.remove("bg-info", "text-white")
+                item.classList.add("bg-light")
+            })
+            item.classList.remove("bg-light")
+            item.classList.add("bg-info", "text-white")
+
+            document.querySelector("#id_Time-time").value = item.innerHTML
+        }
+
+        // time functions END
+
+        // Date Functions START
+        function addMonths(date, months) {
+            let d = date.getDate();
+            date.setMonth(date.getMonth() + +months);
+            if (date.getDate() !== d) {
+                date.setDate(0);
+            }
+            return date;
+        }
+
+        // Add selected months to current date
+        let nydate = addMonths(new Date(), +document.querySelector("#available_booking_months").value);
+
+
+        const disable_weekend = document.querySelector("#disable_weekend").value;
+        const disable_weekdays = document.querySelector("#disable_weekdays").value;
+
+        let oldDate = new Date();
+        let hour = oldDate.getHours();
+        let newDate = oldDate.setHours(hour - 5);
+
+        console.log(newDate);
+        console.log(oldDate);
+
+
+        flatpickr("#id_Date-date", {
+            altInput: true,
+            altFormat: "D j-m, Y",
+            dateFormat: "Y-m-d",
+            minDate: newDate,
+            maxDate: nydate,
+            monthSelectorType: "static",
+            disable: [
+                function rmWeekend(date) {
+                    if (disable_weekend === "False") return ""
+                    return (date.getDay() === 0 || date.getDay() === 6);
+                },
+                disable_weekdays
+            ],
+            shorthand: true,
+            {#allowInvalidPreload: false,#}
+            "locale": {
+                "firstDayOfWeek": 1 // start week on Monday
+            }
+        })
+        // Date Functions END
+    </script>
+
+{% endblock js %}
