@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Home {% endblock title %}
+
+{% block content %}
+
+    <section class="store">
+        <div class="container-xl">
+            <div class="row flex-center">
+                <div class="col-auto">
+                    <div class="card product-card-bg square shadow-square-bottom">
+                        <div class="card-body p-4"><img class="img-fluid border-img" src="{{ product.image.url }}"
+                                                        alt="{{ product.title }}"/></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ms-lg-auto my-7 my-lg-0 px-sm-8 px-lg-0 ps-lg-2 ps-xl-0 text-center text-lg-start">
+                    <h2 class="lh-sm my-4">{{ product.title }}</h2>
+                    <p class="m-5 text-start">{{ product.description |slice:"255" }}</p>
+                    <div class="row p-3">
+                        <div class="col-2">
+                            <label for="select">Qty</label>
+                            <select id="select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+                    {{ product.id }}
+                    <div class="d-grid gap-2 col-6 mx-auto mx-lg-0">
+                        <button id="add_button" value="{{ product.id }}" class="btn btn-primary d-block order-0"><span
+                                class="text-gradient fw-bold">Add</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

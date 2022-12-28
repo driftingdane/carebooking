@@ -3,7 +3,7 @@
 
 {% block head %}
 
-    <title>{% block title %} Booking {% endblock %}</title>
+    <title>{% block title %} About {% endblock %}</title>
     <meta property="og:title" content="{{ domain }} | About">
     <meta property="og:site_name" content="{{ request.get_host }}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
@@ -16,31 +16,22 @@
 
 {% endblock head %}
 
+{% block headline %}
+    <h1 class="text-white-50">About</h1>
+{% endblock headline %}
+
+{% block subline %}
+    <p class="">Know our story and who we are</p>
+{% endblock subline %}
+
+{% block actionbtn %}
+
+{% endblock actionbtn %}
+
 {% block content %}
 
     <div class="section-center">
-        <div class="center-headline">
-            <h1>About</h1>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-10 mx-auto">
 
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper elit orci, eget sodales
-                        sem
-                        tempus et. Nunc sapien sem, maximus sed ante vitae, faucibus molestie nulla. Donec aliquam
-                        ligula
-                        libero, vel tincidunt dui sollicitudin sit amet. Phasellus ac arcu ut lectus condimentum commodo
-                        quis vel mauris. Nam quis augue a neque euismod hendrerit. Aenean suscipit varius pellentesque.
-                        Vivamus commodo nunc sit amet nibh sodales elementum. Donec ornare dui id nunc iaculis, sit amet
-                        iaculis quam ornare. Fusce sollicitudin a tortor ornare molestie.
-
-                    </p>
-                </div>
-
-            </div>
-        </div>
     </div>
 
 {% endblock content %}

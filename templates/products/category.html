@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load humanize %}
+{% block title %} | Home {% endblock title %}
+
+{% block content %}
+
+  <section class="py-2 text-center container">
+    <div class="row py-lg-2">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light text-uppercase">{{ category.name }}</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="store">
+   <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+       {% for product in products %}
+       <div class="accordion" id="accordionExample">
+        <div class="accordion-item mb-5 border border-x-0 border-bottom-0 border-200">
+         <div class="accordion-header" id="heading1">
+        <div class="accordion-body card-bg">
+         <div class="row w-100 justify-content-center">
+            <div class="col-sm-6 font-base">
+                <span class="mb-0 fw-bold text-start fs-3 text-1200">{{ product.title }}</span>
+            </div>
+               <div class="col-8 col-sm-4 pt-2">
+                <i class="far fa-star text-warning"></i>
+                <i class="far fa-star text-warning"></i>
+                <i class="far fa-star text-warning"></i>
+                <i class="far fa-star text-warning"></i>
+                <i class="far fa-star text-warning"></i>
+
+               </div>
+               <div class="col-4 col-sm-2 text-end">
+                   <h5 class="m-0 font-base fw-bold">{{ product.price | intcomma }} <i class="fas fa-euro-sign" style="vertical-align: text-bottom;"></i></h5>
+               </div>
+           </div>
+          </div>
+        </div>
+
+                    <div class="accordion-body shadow-lg">
+                        <div class="row justify-content-center-center">
+                            <div class="col-12 col-sm-2">
+                                {% thumbnail product.feat_img "250" as im %}
+                                    <img class="img-thumbnail img-fluid d-block mx-auto mx-sm-0" src="{{ im.url }}"
+                                         width="" alt="{{ product.title }}">
+                            </div>
+                                {% endthumbnail %}
+                            <div class="col-12 col-sm-9 mt-4 mt-sm-0 d-sm-block d-flex flex-column">
+                                <p>{{ product.description |slice:"150" }}</p>
+                                <p> <a href="{{ product.get_absolute_url }}" class="btn btn-link px-0 font-base">More details</a></p>
+
+                           </div>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+           {% endfor %}
+            </div>
+          </div>
+        </div>
+
+{#              <nav aria-label="Page navigation">#}
+{#                {% if posts.has_other_pages %}#}
+{#                    <ul class="pagination">#}
+{#                        {% if posts.has_previous %}#}
+{#                            <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}">Previous</a>#}
+{#                            </li>#}
+{#                        {% else %}#}
+{#                        {% endif %}#}
+{#                        {% for i in posts.paginator.page_range %}#}
+{#                            {% if posts.number == i %}#}
+{#                                <li class="active page-link"><span>{{ i }} <span class="sr-only text-primary">(current)</span></span></li>#}
+{#                            {% else %}#}
+{#                                <li class="page-link"><a href="?page={{ i }}">{{ i }}</a></li>#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                        {% if posts.has_next %}#}
+{#                            <li class="page-item"><a class="page-link"#}
+{#                                                     href="?page={{ posts.next_page_number }}">Next</a></li>#}
+{#                        {% else %}#}
+{#                        {% endif %}#}
+{##}
+{#                    </ul>#}
+{#                {% endif %}#}
+{#            </nav>#}
+
+    </section>
+
+{% endblock %}

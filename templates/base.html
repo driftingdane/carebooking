@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>
 <html lang="en" class="ie6 oldie"> <![endif]-->
@@ -43,7 +44,7 @@
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
     {% block head %}
         <meta name="author" content="Morten Noerregaard">
-        <meta name="description" content="Lingostack | We stack languages ready to learn">
+        <meta name="description" content="{{ domain }} | {{ subtext }}">
         <meta name="keywords" content="">
         <meta name="copyright" content="{{ request.get_host }}">
         <!-- Facebook OpenG -->
@@ -58,10 +59,10 @@
         <meta property="og:description" content="">
 
 
-    <!-- Custom css for other templates -->
-    {% block css %}
+        <!-- Custom css for other templates -->
+        {% block css %}
 
-    {% endblock css %}
+        {% endblock css %}
 
 
     {% endblock head %}
@@ -70,6 +71,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap" rel="stylesheet">
 
+    {% compress css %}
     <link href="{% static 'css/bootstrap.min.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/navbar.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/main.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
@@ -78,6 +80,7 @@
 
     <!-- custom imports -->
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    {% endcompress css %}
 
     <!--- CSS files are imported into scss -->
     <link href="{% static 'scss/scss.min.css' %}" rel="stylesheet" type="text/css">
@@ -94,7 +97,34 @@
 
 <body class="d-flex flex-column h-100">
 
-{% include 'inc/navbar.html' %}
+<header>
+
+    {% include 'inc/navbar.html' %}
+
+    <!-- Background image -->
+    <div class="bg-overlay">
+        <div class="center-headline mt-1 mt-lg-2">
+
+            {% block headline %}
+             <!-- custom blocks -->
+            {% endblock headline %}
+
+        </div>
+        <div class="col-6 mx-auto mb-5 text-center">
+
+            {% block subline %}
+            <!-- custom blocks -->
+            {% endblock subline %}
+
+            {% block actionbtn %}
+            <!-- custom blocks -->
+            {% endblock actionbtn %}
+
+        </div>
+    </div>
+    <!-- Background image -->
+
+</header>
 
 <main class="flex-shrink-0">
 

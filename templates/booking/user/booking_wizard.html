@@ -20,17 +20,20 @@
 
     <div>
         <div id="booking" class="section-center">
-            <div class="center-headline">
-                <h1>Booking</h1>
-            </div>
-            <div class="container-fluid">
+            {% block headline %}
+                <h1 class="text-white-50">Booking</h1>
+            {% endblock headline %}
+            {% block subline %}
+                <p class="text-muted">{ subtext }}</p>
+            {% endblock subline %}
+            <div class="container">
                 <div class="row">
                     <div class="col-md-4 booking-cta px-4">
-                        <h2 class="">{{ title }}</h2>
-                        <span class="text-wrap text-muted py-2">{{ description }}</span>
+                        <h2 class="">{{ domain }}</h2>
+                        <span class="text-wrap text-muted py-2">{{ subtitle }}</span>
                         <div class="text-wrap py-2">{{ book_now }}</div>
                     </div>
-                    <div class="col-md-7 col-md-offset-1">
+                    <div class="col-md-7 col-offset-1">
                         <div class="booking-form collage-blueWhite">
                             <!-- progress START -->
                             <div class="progress mb-4">

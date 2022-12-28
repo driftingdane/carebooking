@@ -1,10 +1,35 @@
 .section .section-center {
     margin-bottom: 2em;
 }
-.center-headline
-{
-    text-align: center;
-    padding: 2.5rem;
-    opacity: 1;
-    color: rgba(0,0,0,.5)!important;
+
+.opacity-95 {
+    opacity: .95 !important;
 }
+
+.center-headline {
+    text-align: center;
+    padding-bottom: 0.5rem;
+    padding-top: 2.5rem;
+    opacity: 1;
+    color: rgba(0, 0, 0, .5) !important;
+}
+
+.bg-overlay {
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .4)), url("/static/img/header-img/header-img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    height: 450px;
+    padding-top: 50px;
+}
+
+@media screen and (min-width: 990px) {
+
+}
+.nav-item i {
+    display: inline-block;
+    text-align: center;
+
+}
+

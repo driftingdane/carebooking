@@ -1,36 +1,41 @@
 {% load static %}
-<header class="sticky-top">
-    <nav class="navbar navbar-expand-lg bg-light rounded collage-nav">
-        <div class="container-fluid">
-            <button class="btn navbar-toggler mb-3" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarsExample10">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-md-center text-center" id="navbarsExample10">
-                <ul class="navbar-nav mb-3">
-                    <li class="nav-item fs-4">
-                        <a class="text-decoration-none text-reset align-middle"
-                           href="{% url 'main:home' %}">
-                            <span>Care</span>
-                            <img class="rounded mx-auto d-block" src="{% static 'img/logo.png' %}" alt="logo">
-                            <span>Cream</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mt-3">
-                        <a class="nav-link" href="{% url 'services:service' %}">Our Care</a>
-                    </li>
-                    <li class="nav-item mt-3">
-                        <a class="nav-link" href="{% url 'booking:create_booking' %}">Booking</a>
-                    </li>
-                    <li class="nav-item mt-3">
-                        <a class="nav-link" href="{% url 'about:about' %}">About</a>
-                    </li>
-                    <li class="nav-item mt-3">
-                        <a class="nav-link" href="{% url 'contact:contact' %}">Contact</a>
-                    </li>
-                </ul>
+<nav class="navbar navbar-expand-lg bg-light collage-nav fixed-top opacity-95">
+    <div class="container-fluid">
+        <button class="btn navbar-toggler mb-3" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarsExample10">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center position-relative" id="navbarsExample10">
+            <div class="position-absolute d-none d-lg-block fs-6">
+                <a class="text-decoration-none text-reset align-middle"
+                   href="{% url 'main:home' %}">
+                    <img class="mx-auto" width="80" src="{% static 'img/logo2_100.png' %}" alt="logo">
+                    <span class="fst-italic fw-semibold align-middle">{{ domain }}</span>
+                </a>
             </div>
+            <ul class="navbar-nav w-100 justify-content-md-center py-2">
+                <li class="nav-item d-block d-lg-none">
+                    <a title="Home" class="text-decoration-none text-reset align-middle"
+                       href="{% url 'main:home' %}">
+                        <span class="fst-italic fw-semibold align-middle">{{ domain }}</span>
+                        <img class="mx-auto d-block" width="80" src="{% static 'img/logo2_100.png' %}" alt="logo">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a title="Our services" class="nav-link hover-top-shadow" href="{% url 'store:all_products' %}">
+                        <i class="fa-solid fa-at fa-fw align-middle"></i>Our Care</a>
+                </li>
+                <li class="nav-item">
+                    <a title="Book our time" class="nav-link" href="{% url 'booking:create_booking' %}"><i class="fa-solid fa-at fa-fw align-middle"></i>Booking</a>
+                </li>
+                <li class="nav-item">
+                    <a title="About us" class="nav-link" href="{% url 'about:about' %}"><i class="fa-solid fa-at fa-fw align-middle"></i><span>About</span></a>
+                </li>
+                <li class="nav-item">
+                    <a title="Contact us" class="nav-link" href="{% url 'contact:contact' %}"><span><i class="fa-solid fa-at fa-fw align-middle"></i>Contact</span></a>
+                </li>
+            </ul>
+            <span class="position-absolute mt-4 top-50 start-50 translate-middle d-none d-lg-block text-opacity-50 text-dark small fst-italic">{{ subtitle }}</span>
         </div>
-    </nav>
-</header>
+    </div>
+</nav>
