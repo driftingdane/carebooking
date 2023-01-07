@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from main.models import SiteInfo
+
+
+@admin.register(SiteInfo)
+class SiteInfoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description', 'is_feature', 'image', 'alt_text',)
+    prepopulated_fields = {'name': ('alt_text',), }

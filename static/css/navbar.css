@@ -1,10 +1,17 @@
 
 .collage-nav {
 
-    background:-webkit-linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
-    background:-moz-linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
-    background:linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
+    background: -webkit-linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
+    background: -moz-linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
+    background: linear-gradient(45deg, rgb(252, 213, 206) 33%, transparent 33%), linear-gradient(45deg, #fae1dd 67%, transparent 33%), linear-gradient(45deg, rgb(248, 237, 235) 100%, transparent 67%);
 
+}
+
+.collage-btn {
+    background: -webkit-linear-gradient(45deg, rgb(244 186 176) 33%, transparent 33%), linear-gradient(45deg, #f2c8c2 67%, transparent 33%), linear-gradient(45deg, rgb(244 186 176) 100%, transparent 67%);
+    background: -moz-linear-gradient(45deg, rgb(244 186 176) 33%, transparent 33%), linear-gradient(45deg, #f2c8c2 67%, transparent 33%), linear-gradient(45deg, rgb(244 186 176) 100%, transparent 67%);
+    background: linear-gradient(45deg, rgb(244 186 176) 33%, transparent 33%), linear-gradient(45deg, #f2c8c2 67%, transparent 33%), linear-gradient(45deg, rgb(244 186 176) 100%, transparent 67%);
+    border-radius: 0;
 }
 
 .btn:focus {
@@ -19,21 +26,92 @@
 
 /* Hover */
 .hover-top-shadow {
-  -webkit-transform: translateY(0) translateZ(0);
-  transform: translateY(0) translateZ(0);
-  -webkit-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+    -webkit-transform: translateY(0) translateZ(0);
+    transform: translateY(0) translateZ(0);
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .hover-top-shadow.hover-top-shadow-lg:hover, .hover-top-shadow.hover-top-shadow-lg:focus {
-  -webkit-transform: translateY(-0.3125rem) translateZ(0);
-  transform: translateY(-0.3125rem) translateZ(0);
+    -webkit-transform: translateY(-0.3125rem) translateZ(0);
+    transform: translateY(-0.3125rem) translateZ(0);
 }
 
 .hover-top-shadow:hover, .hover-top-shadow:focus {
-  -webkit-transform: translateY(-0.125rem) translateZ(0);
-  transform: translateY(-0.125rem) translateZ(0);
-  -webkit-box-shadow: 0.5rem 0.5rem 1.5rem rgba(22, 28, 45, 0.1) !important;
-  box-shadow: 0.5rem 0.5rem 1.5rem rgba(22, 28, 45, 0.1) !important;
+    -webkit-transform: translateY(-0.125rem) translateZ(0);
+    transform: translateY(-0.125rem) translateZ(0);
+    -webkit-box-shadow: 0.5rem 0.5rem 1.5rem rgba(22, 28, 45, 0.1) !important;
+    box-shadow: 0.5rem 0.5rem 1.5rem rgba(22, 28, 45, 0.1) !important;
 }
+
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+    transition: all .5s;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+    position: relative;
+}
+
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0;
+    content: '.';
+    color: transparent;
+    background: #aaa;
+    height: 1px;
+}
+
+nav.stroke ul li a:hover:after {
+    width: 80%;
+}
+.nav-item span {
+    color: rgb(0 0 0 / 65%);
+
+}
+
+@media screen and (max-width: 990px) {
+    nav.stroke ul li  a:hover:after {
+        width: 20% !important;
+    }
+    .navbar-nav {
+        padding-top: 2rem !important;
+    }
+}
+
+i {
+    /*-webkit-text-fill-color: rgba(53, 117, 186, 0.58);*/
+    -webkit-text-stroke-width: 0.025em;
+    -webkit-text-stroke-color: #ebebeb;
+}
+
+s, strike{text-decoration:none;position:relative;}
+s::before, strike::before {
+    top: 50%; /*tweak this to adjust the vertical position if it's off a bit due to your font family */
+    background:red !important; /*this is the color of the line*/
+    opacity:.7;
+    content: '';
+    width: 110%;
+    position: absolute;
+    height:.1em;
+    border-radius:.1em;
+    left: -5%;
+    white-space:nowrap;
+    display: block;
+    transform: rotate(-15deg);
+}
+s.straight::before, strike.straight::before{transform: rotate(0deg);left:-1%;width:102%;}
+

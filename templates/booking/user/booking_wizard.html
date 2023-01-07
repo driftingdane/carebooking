@@ -16,16 +16,21 @@
 
 {% endblock head %}
 
+{% block headline %}
+    <h1 class="">Booking</h1>
+{% endblock headline %}
+
+{% block subline %}
+    <p class="">Book a memorable time now</p>
+{% endblock subline %}
+
+{% block actionbtn %}
+
+{% endblock actionbtn %}
+
 {% block content %}
 
-    <div>
-        <div id="booking" class="section-center">
-            {% block headline %}
-                <h1 class="text-white-50">Booking</h1>
-            {% endblock headline %}
-            {% block subline %}
-                <p class="text-muted">{ subtext }}</p>
-            {% endblock subline %}
+        <div id="booking" class="section-center mt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 booking-cta px-4">
@@ -109,7 +114,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
 {% endblock content %}

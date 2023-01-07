@@ -15,21 +15,30 @@
 }
 
 .bg-overlay {
-    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .4)), url("/static/img/header-img/header-img.jpg");
+    background: rgb(34 98 107 / 56%);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     color: #fff;
-    height: 450px;
-    padding-top: 50px;
+    /*height: 450px;*/
+    padding-top: 0;
+    padding-bottom: 50px;
 }
 
-@media screen and (min-width: 990px) {
-
-}
-.nav-item i {
-    display: inline-block;
-    text-align: center;
-
+.clip-ellipse {
+    clip-path: ellipse(95%  100% at top);
+    -webkit-clip-path: ellipse(93%  100% at top);
 }
 
+.olay{
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    /*background-image: linear-gradient(to right top ,rgba(39, 37, 185, 0.42), rgba(88, 87, 202, 0.7), rgba(198, 48, 62, 0.76), rgba(231, 134, 11, 0.79),#e748beb5)!important;*/
+    background-image:linear-gradient(to right top , rgb(248, 249, 250), rgb(250 225 221 / 53%), #fcd5ceb0, rgb(248 237 235 / 87%), #f8f9fa)!important;
+
+}

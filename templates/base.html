@@ -14,11 +14,12 @@
 
     <!-- Custom Build CMS (Django and Python) Created by: Morten Noerregaard
 
-          https://CraftinDev.com
-          Programming by: Morten Noerregaard
-          Design by: Morten Noerregaard
-          Any Wordpress? NOOOOOOOO!!!
-          -->
+    https://CraftinDev.com
+    Programming by: Morten Noerregaard
+    Design by: Morten Noerregaard
+    Any Wordpress? NOOOOOOOO!!!
+
+    -->
 
     <meta name="robots" content="all">
     <meta content="max-age=200" http-equiv="cache-control">
@@ -72,14 +73,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap" rel="stylesheet">
 
     {% compress css %}
-    <link href="{% static 'css/bootstrap.min.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/navbar.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/main.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/blend.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/footer.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/bootstrap.min.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/navbar.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/main.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/blend.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/footer.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
 
-    <!-- custom imports -->
-    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <!-- custom imports -->
+        <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
     {% endcompress css %}
 
     <!--- CSS files are imported into scss -->
@@ -102,24 +103,30 @@
     {% include 'inc/navbar.html' %}
 
     <!-- Background image -->
-    <div class="bg-overlay">
-        <div class="center-headline mt-1 mt-lg-2">
+    <div class="bg-banner-home clip-ellipse" style="background-image: url('{{ image.url }}'); max-width: 100%; max-height: 100%;">
+        <div class="olay">
+            <div class="center-headline">
 
-            {% block headline %}
-             <!-- custom blocks -->
-            {% endblock headline %}
+                <div class="mt-5 mt-lg-5">
+                    {% block headline %}
+                        <!-- custom blocks -->
+                    {% endblock headline %}
+                </div>
 
-        </div>
-        <div class="col-6 mx-auto mb-5 text-center">
+            </div>
+            <div class="col-6 mx-auto text-center pb-1">
 
-            {% block subline %}
-            <!-- custom blocks -->
-            {% endblock subline %}
+                <div class="mb-5">
+                    {% block subline %}
+                        <!-- custom blocks -->
+                    {% endblock subline %}
 
-            {% block actionbtn %}
-            <!-- custom blocks -->
-            {% endblock actionbtn %}
+                    {% block actionbtn %}
+                        <!-- custom blocks -->
+                    {% endblock actionbtn %}
+                </div>
 
+            </div>
         </div>
     </div>
     <!-- Background image -->

@@ -107,7 +107,7 @@ class Product(models.Model):
             },
         },
         max_digits=5,
-        decimal_places=2,
+        decimal_places=2, blank=True, null=True,
     )
     is_active = models.BooleanField(
         verbose_name=_("Product visibility"),
@@ -116,7 +116,6 @@ class Product(models.Model):
     )
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
-
 
     class Meta:
         ordering = ("-created_at",)
@@ -224,7 +223,6 @@ class ProductImage(models.Model):
 
             else:
                 imag.save(self.image.path)
-
 
     @property
     def thumbnail_preview(self):
