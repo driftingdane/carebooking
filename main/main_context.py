@@ -11,10 +11,6 @@ def current_site_info(request):
     domain = current_site.domain
     booking_title = ""
     book_now = "Book a memorable time now!"
-    print(main.description)
-    print(main.subtitle)
-    print(main.image)
-    print(main.alt_text)
 
     data = {
         'domain': domain,
@@ -22,8 +18,14 @@ def current_site_info(request):
         'book_now': book_now,
         'name': main.name,
         'image': main.image,
+        'logo': main.logo,
         'alt_text': main.alt_text,
         'desc': main.description,
+        'addr': main.address,
+        'city': main.city,
+        'zip': main.zipcode,
+        'phone': main.phone,
+        'email': main.email,
 
     }
     return data

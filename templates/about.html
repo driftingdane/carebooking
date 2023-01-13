@@ -30,9 +30,49 @@
 
 {% block content %}
 
-    <div class="section-center">
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container py-2 mt-5">
 
-    </div>
+            <div class="row">
+                <div class="col-lg-6 d-flex align-self-baseline mt-5">
+                    <img src="{{ img.url }}" class="img-fluid rounded-1 pt-2" alt="">
+                </div>
+
+                <div class="col-lg-6 pt-2 content">
+                    <ul class="list-group list-group-flush mt-3">
+                        <li class=""><i class="fa-solid fa-check-double align-middle"></i> Ullamco laboris nisi ut
+                            aliquip ex ea commodo
+                            consequat.
+                        </li>
+                        <li class=""><i class="fa-solid fa-check-double align-middle"></i> Duis aute irure dolor in
+                            reprehenderit in voluptate
+                            velit.
+                        </li>
+                        <li class=""><i class="fa-solid fa-check-double align-middle"></i> Voluptate repellendus
+                            pariatur reprehenderit
+                            corporis sint.
+                        </li>
+                        <li class=""><i class="fa-solid fa-check-double align-middle"></i> Ullamco laboris nisi ut
+                            aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda
+                            mastiro dolore eu fugiat nulla pariatur.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 mx-auto pt-2 content fancy-border-list">
+
+                    <ul class="first"></ul>
+                    <h3 class="fs-6 mb-2">{{ title }}</h3>
+                    <p class="">{{ about }}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
 
 {% endblock content %}
 

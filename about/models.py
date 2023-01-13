@@ -58,20 +58,5 @@ class About(models.Model):
             else:
                 imag.save(self.image.path)
 
-    @property
-    def thumbnail_preview(self):
-        if self.image:
-            _thumbnail = get_thumbnail(self.image,
-                                       '200x150',
-                                       upscale=False,
-                                       crop=False,
-                                       quality=100)
-            return format_html(
-                '<img src="{}" width="{}" height="{}">'.format(_thumbnail.url, _thumbnail.width, _thumbnail.height))
-        # return ""
-
-        else:
-            pass
-
     def __str__(self):
         return str(self.id)

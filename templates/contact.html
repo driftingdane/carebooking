@@ -30,15 +30,74 @@
 
 {% block content %}
 
-    <div class="section-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-10 mx-auto">
-
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container py-2 mt-5">
+            <div class="row mb-4" data-aos="fade-up">
+                <div class="col-lg-6">
+                    <div class="info-box mb-4">
+                        <i class="fa-regular fa-map"></i>
+                        <h3>Our Address</h3>
+                        <p>{{ addr }}</p>
+                        <span>{{ zip }} {{ city }}</span>
+                    </div>
                 </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="info-box  mb-4">
+                        <i class="fa-solid fa-at"></i>
+                        <h3>Email Us</h3>
+                        <p>{{ email }}</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="info-box  mb-4">
+                        <i class="fa-solid fa-phone-flip"></i>
+                        <h3>Call Us</h3>
+                        <p>+45 {{ phone }}</p>
+                    </div>
+                </div>
+
             </div>
+
+            <div class="row" data-aos="fade-up">
+                <div class="col-lg-6 ">
+                    <iframe class="mb-4 mb-lg-0 border-0"
+                            src="https://maps.google.com/maps?q=lyngby&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            style="width: 100%; height: 384px;" allowfullscreen></iframe>
+                </div>
+
+                <div class="col-lg-6">
+                    <form role="form" class="php-email-form" id="contactform" action="{% url 'contact:contact' %}" method="post" novalidate>
+                        {% csrf_token %}
+                        <!-- reCAPTCHA input -->
+                        {#                    <input type="hidden" id="recaptcha" name="g-recaptcha-response">#}
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                {{ form.name }}
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                                {{ form.email }}
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            {{ form.subject }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form.message }}
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                             <button class="btn btn-sm text-black collage-btn rounded-1" type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
         </div>
-    </div>
+    </section><!-- End Contact Section -->
 
 
 {% endblock content %}

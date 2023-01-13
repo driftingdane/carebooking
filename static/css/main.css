@@ -1,3 +1,25 @@
+/* Fonts */
+:root {
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Amatic SC", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+}
+
+body, html {
+    font-family: var(--font-default);
+}
+h1, .subline
+{
+  font-family: var(--font-primary);
+  font-weight: bold;
+}
+h2,h3, h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+  font-weight: bold;
+}
+
 .section .section-center {
     margin-bottom: 2em;
 }
@@ -39,6 +61,6 @@
     height: 100%;
     right: 0;
     /*background-image: linear-gradient(to right top ,rgba(39, 37, 185, 0.42), rgba(88, 87, 202, 0.7), rgba(198, 48, 62, 0.76), rgba(231, 134, 11, 0.79),#e748beb5)!important;*/
-    background-image:linear-gradient(to right top , rgb(248, 249, 250), rgb(250 225 221 / 53%), #fcd5ceb0, rgb(248 237 235 / 87%), #f8f9fa)!important;
+    background-image:linear-gradient(to right top , rgb(248, 249, 250), rgb(250 225 221 / 24%), #fcd5ce70, rgb(248 237 235 / 87%), #f8f9fa)!important;
 
 }

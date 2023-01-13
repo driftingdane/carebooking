@@ -36,3 +36,13 @@
     /*background: rgba(215, 215, 215, 0.51);*/
     padding-top: 150px;
 }
+
+.footer-icon {
+    -webkit-text-stroke-width: 0.025em;
+    -webkit-text-stroke-color: #ebebeb;
+    font-size: 1em;
+    color: #c7e2d2;
+    border-radius: 50%;
+    padding: 8px;
+    border: 2px dotted #f5a0a0;
+}

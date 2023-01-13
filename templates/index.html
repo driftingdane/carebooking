@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load thumbnail %}
 {% load humanize %}
 
 {% block head %}
@@ -78,7 +77,7 @@
                         <a class="postcard__img_link" href="#">
                         <img class="postcard__img" src="{{ image.image.url }}" alt="{{ image.alt_text }}">
                         <a href="{% url 'booking:create_booking' %}"
-                           class="btn btn-sm position-absolute top-0 border-0 collage-btn text-black">Book
+                           class="btn btn-lg position-absolute top-0 border-0 collage-btn text-black">Book
                             Now</a>
                         </a>
                         {% else %}

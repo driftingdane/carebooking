@@ -3,11 +3,7 @@
 /*                                   Borders                                  */
 /* -------------------------------------------------------------------------- */
 .overflow-hidden[class*='rounded'] {
-  mask-image: radial-gradient(#fff, #000);
-}
-
-.overflow-hidden[class*='rounded'] {
-  -webkit-mask-image: -webkit-radial-gradient(gray(255), black);
+    mask-image: radial-gradient(#fff, #000);
 }
 
 .fancy-border {
@@ -18,8 +14,8 @@
 
 .fancy-border-list {
   padding-bottom: 0.5em;
-  border-bottom: 1px solid;
-  border-image:   linear-gradient(to right, #feb272 25%, #ffff80 25%, #c5b3e6 50%, #badbcc 50%) 5;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, #cfe2ff 25%, #f8f9fa 25%, #c5b3e6 50%, #badbcc 50%) 5;
 }
 
 
@@ -96,11 +92,6 @@
 .border-start-2 {
   border-left-width: 0.125rem !important;
 }
-
-.header-icon {
-  color: #04bad2
-}
-
 
 .collage-greenYellow {
     background: -webkit-linear-gradient(-45deg, #009C3B 33%, transparent 0%), linear-gradient(-45deg, #FFDF00 67%, transparent 33%), linear-gradient(-45deg, #3575ba 100%, transparent 67%);

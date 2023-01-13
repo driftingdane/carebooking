@@ -10,7 +10,7 @@
             <div class="position-absolute d-none d-lg-block fs-6">
                 <a class="text-decoration-none text-reset align-middle"
                    href="{% url 'main:home' %}">
-                    <img class="mx-auto" width="80" src="{% static 'img/logo2_100.png' %}" alt="logo">
+                    <img class="mx-auto" width="80" src="{{ logo.url }}" alt="logo">
                     <span class="fst-italic fw-semibold align-middle">{{ domain }}</span>
                 </a>
             </div>
@@ -18,26 +18,26 @@
             <div class="position-absolute top-0 start-50 translate-middle d-block d-lg-none">
                 <a class="text-decoration-none text-reset align-middle"
                    href="{% url 'main:home' %}">
-                    <img class="mx-auto" width="70" src="{% static 'img/logo2_100.png' %}" alt="logo">
+                    <img class="mx-auto" width="70" src="{{ logo.url }}" alt="logo">
                     <span class="fst-italic fw-semibold align-middle">{{ domain }}</span>
                 </a>
             </div>
             <ul class="navbar-nav w-100 justify-content-md-center py-2">
                 <li class="nav-item">
                     <a title="Our services" class="nav-link" href="{% url 'store:all_products' %}">
-                        <i class="fa-solid fa-spa fa-fw align-baseline"></i><span>Our Care</span></a>
+                        <i class="fa-solid fa-spa align-baseline header-icon fa-fw"></i><span>Our Care</span></a>
                 </li>
                 <li class="nav-item">
                     <a title="Book your time" class="nav-link" href="{% url 'booking:create_booking' %}"><i
-                            class="fa-regular fa-calendar-check fa-fw align-baseline"></i><span>Booking</span></a>
+                            class="fa-regular fa-calendar-check align-baseline header-icon fa-fw"></i><span>Booking</span></a>
                 </li>
                 <li class="nav-item">
                     <a title="About us" class="nav-link" href="{% url 'about:about' %}"><i
-                            class="fa-solid fa-circle-info fa-fw align-baseline"></i><span>About</span></a>
+                            class="fa-solid fa-circle-info align-baseline header-icon fa-fw"></i><span>About</span></a>
                 </li>
                 <li class="nav-item">
                     <a title="Contact us" class="nav-link" href="{% url 'contact:contact' %}"><i
-                            class="fa-solid fa-at fa-fw align-middle"></i><span>Contact</span></a>
+                            class="fa-solid fa-at align-middle header-icon fa-fw"></i><span>Contact</span></a>
                 </li>
             </ul>
             <span class="position-absolute mt-4 top-50 start-50 translate-middle d-none d-lg-block text-opacity-50 text-dark small fst-italic">{{ subtitle }}</span>

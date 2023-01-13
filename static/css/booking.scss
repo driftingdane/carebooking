@@ -21,7 +21,6 @@ $warning-color: #ffc107;
 	}
 }
 #booking {
-	font-family: 'Lato', sans-serif;
 	background-size: cover;
 	background-position: center;
 	color: #191a1e;
@@ -46,7 +45,6 @@ $warning-color: #ffc107;
 		text-align: center;
 		pointer-events: none;
 		color: #dfe5e9;
-		font-size: 14px;
 		&:after {
 			content: '\279C';
 			display: block;
