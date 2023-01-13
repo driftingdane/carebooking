@@ -10,8 +10,8 @@ django-mptt==0.14.0
 fontawesomefree==6.2.1
 isort==5.11.4
 Pillow==9.3.0
-psycopg2==2.9.5
-psycopg2-binary==2.9.5
+#psycopg2==2.9.5
+#psycopg2-binary==2.9.5
 pycodestyle==2.10.0
 rcssmin==1.1.0
 rjsmin==1.2.0
