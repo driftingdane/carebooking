@@ -19,3 +19,4 @@ sorl-thumbnail==12.9.0
 sqlparse==0.4.3
 toml==0.10.2
 tzdata==2022.6
+gunicorn==20.1.0
